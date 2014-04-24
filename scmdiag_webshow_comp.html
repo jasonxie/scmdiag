@@ -1,189 +1,99 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
-
 <head>
-
 <style type="text/css">
 p
 {
 text-align:center;
 }
+.figimg
+{
+   width:400px;
+   float:left;
+}
+.figcap
+{
+   background-color:yellow;
+   width:400px;
+   float:left;
+}
+.figframe
+{
+   margin:2px;
+   width:400px;
+   float:left;
+}
+.cleardiv
+{
+   clear:both;
+}
+
 </style>
 
- </head>
+<script>
+function figrow(varlist, levtype)
+{
+   nlist = varlist.length;
+
+   if ( levtype != 'mlev' )
+   {
+      document.write('<div>');
+      for( i=0; i<nlist; i++)
+      {
+         document.write('<div class="figframe">');
+         document.write('<div class="figcap">'+varlist[i]+'</div>');
+         document.write('<IMG class="figimg" SRC="SCM_'+levtype+'_'+varlist[i]+'.png">');
+         document.write('</div>');
+      }
+      document.write('<div class="cleardiv"></div>');
+      document.write('</div>');
+   }
+   else
+   {
+      for( i=0; i<nlist; i++)
+      {
+      document.write('<div>');
+
+         document.write('<div class="figframe">');
+         document.write('<div class="figcap">'+varlist[i]+'-TEST</div>');
+         document.write('<IMG class="figimg" SRC="SCM_'+levtype+'_'+varlist[i]+'-0.png">');
+         document.write('</div>');
+
+         document.write('<div class="figframe">');
+         document.write('<div class="figcap">'+varlist[i]+'-CNTR</div>');
+         document.write('<IMG class="figimg" SRC="SCM_'+levtype+'_'+varlist[i]+'-1.png">');
+         document.write('</div>');
+
+         document.write('<div class="figframe">');
+         document.write('<div class="figcap">'+varlist[i]+'-DIFF</div>');
+         document.write('<IMG class="figimg" SRC="SCM_'+levtype+'_'+varlist[i]+'-2.png">');
+         document.write('</div>');
+
+      document.write('<div class="cleardiv"></div>');
+
+      document.write('</div>');
+      }
+   }
+
+}
+</script>
+
+</head>
 
 <body>
 
 <p>SCM Diagnostics Results</p>
-
-  <TABLE>
-
-  <TR>
-	<TD>T</TD>
-	<TD>Q</TD>
-	<TD>CLOUD</TD>
-  </TR>
-  <TR>
-	<TD><IMG SRC="SCM_mlev_avg_T.png" WIDTH="600" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_avg_Q.png" WIDTH="600" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_avg_CLOUD.png" WIDTH="600" BORDER="0" ALT=""></TD>
-  </TR>
-
-  <TR>
-	<TD>CLDLOW</TD>
-	<TD>CLDMED</TD>
-	<TD>CLDHGH</TD>
-  </TR>
- 	<TD><IMG SRC="SCM_slev_CLDLOW.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_slev_CLDMED.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  <TD><IMG SRC="SCM_slev_CLDHGH.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  <TR>
-  </TR>
-
-
-  <TR>
-	<TD>FSNTC</TD>
-	<TD>FSNT</TD>
-	<TD>FLNTC</TD>
-	<TD>FLNT</TD>
-  </TR>
-  <TR>
-    <TD><IMG SRC="SCM_slev_FSNTC.png" WIDTH="700" BORDER="0" ALT=""></TD>
-		<TD><IMG SRC="SCM_slev_FSNT.png" WIDTH="700" BORDER="0" ALT=""></TD>
-    <TD><IMG SRC="SCM_slev_FLNTC.png" WIDTH="700" BORDER="0" ALT=""></TD>
-		<TD><IMG SRC="SCM_slev_FLNT.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  </TR>
-
-  <TR>
-	<TD>SWCF</TD>
-	<TD>LWCF</TD>
-  </TR>
-  <TR>
-	<TD><IMG SRC="SCM_slev_SWCF.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_slev_LWCF.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  </TR>
-
-  <TR>
-	<TD>QRS - CNTR</TD>
-	<TD>QRS - TEST</TD>
-	<TD>QRS - DIFF</TD>
-  </TR>
-  <TR>
-	<TD><IMG SRC="SCM_mlev_QRS-0.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_QRS-1.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_QRS-2.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  </TR>
-
-  <TR>
-	<TD>QRL - CNTR</TD>
-	<TD>QRL - TEST</TD>
-	<TD>QRL - DIFF</TD>
-  </TR>
-  <TR>
-	<TD><IMG SRC="SCM_mlev_QRL-0.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_QRL-1.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_QRL-2.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  </TR>
-
-  <TR>
-  	<TD>FLNS</TD>
-  	<TD>FLNT</TD>
-    <TD>FSDS</TD>
-    <TD>FSNT</TD>
-  </TR>
-  <TR>
-  	<TD><IMG SRC="SCM_slev_FLNS.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  	<TD><IMG SRC="SCM_slev_FLNT.png" WIDTH="700" BORDER="0" ALT=""></TD>
-    <TD><IMG SRC="SCM_slev_FSDS.png" WIDTH="700" BORDER="0" ALT=""></TD>
-    <TD><IMG SRC="SCM_slev_FSNS.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  </TR>
-
-  <TR>
-	<TD>PRECC</TD>
-	<TD>PRECL</TD>
-	<TD>PRECT</TD>
-  </TR>
-  <TR>
-	<TD><IMG SRC="SCM_slev_PRECC.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_slev_PRECL.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_slev_PRECT.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  </TR>
-
-  <TR>
-	<TD>SHFLX</TD>
-	<TD>LHFLX</TD>
-  </TR>
-  <TR>
-	<TD><IMG SRC="SCM_slev_SHFLX.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_slev_LHFLX.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  </TR>
-
-
-  <TR>
-	  <TD>PBLH</TD>
-  </TR>
-  <TR>
-	  <TD><IMG SRC="SCM_slev_PBLH.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  </TR>
-
-  <TR>
-	<TD>CLOUD - CNTR</TD>
-	<TD>CLOUD - TEST</TD>
-	<TD>CLOUD - DIFF</TD>
-  </TR>
-  <TR>
-	<TD><IMG SRC="SCM_mlev_CLOUD-0.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_CLOUD-1.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_CLOUD-2.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  </TR>
-
-  <TR>
-	<TD>CLDLIQ - CNTR</TD>
-	<TD>CLDLIQ - TEST</TD>
-	<TD>CLDLIQ - DIFF</TD>
-  </TR>
-  <TR>
-	<TD><IMG SRC="SCM_mlev_CLDLIQ-0.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_CLDLIQ-1.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_CLDLIQ-2.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  </TR>
-
-  <TR>
-	<TD>CLDICE - CNTR</TD>
-	<TD>CLDICE - TEST</TD>
-	<TD>CLDICE - DIFF</TD>
-  </TR>
-  <TR>
-	<TD><IMG SRC="SCM_mlev_CLDICE-0.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_CLDICE-1.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_CLDICE-2.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  </TR>
-
-  <TR>
-	<TD>ICLDTWP - CNTR</TD>
-	<TD>ICLDTWP - TEST</TD>
-	<TD>ICLDTWP - DIFF</TD>
-  </TR>
-  <TR>
-	<TD><IMG SRC="SCM_mlev_ICLDTWP-0.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_ICLDTWP-1.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_ICLDTWP-2.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  </TR>
-
-  <TR>
-	<TD>GCLDLWP - CNTR</TD>
-	<TD>GCLDLWP - TEST</TD>
-	<TD>GCLDLWP - DIFF</TD>
-  </TR>
-  <TR>
-	<TD><IMG SRC="SCM_mlev_GCLDLWP-0.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_GCLDLWP-1.png" WIDTH="700" BORDER="0" ALT=""></TD>
-	<TD><IMG SRC="SCM_mlev_GCLDLWP-2.png" WIDTH="700" BORDER="0" ALT=""></TD>
-  </TR>
-
-  </TABLE>
+   <script>
+      figrow(['T','Q','CLOUD'], 'mlev_avg');
+      figrow(['CLDLOW','CLDMED','CLDHGH'], 'slev');
+      figrow(['FSNTC','FSNT','FLNTC','FLNT'], 'slev');
+      figrow(['SWCF','LWCF'], 'slev');
+      figrow(['QRS','QRL'], 'mlev');
+      figrow(['FLNS','FLNT','FSDS','FSNT'], 'slev');
+      figrow(['PRECC','PRECL','PRECT'], 'slev');
+      figrow(['SHFLX','LHFLX'], 'slev');
+      figrow(['PBLH'], 'slev');
+   </script>
 
 </body>
-
 </html>
-
