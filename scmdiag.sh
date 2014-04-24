@@ -6,14 +6,14 @@
 #**************************************
 
 #setting the SCAMDIAG code directory
-export SCMDIAG_CODE=/R2/xxie/modelrun/scmdiag
+export SCMDIAG_CODE=/R2/xxie/xxgit/scmdiag
 
 #setting the test data directory and observation data directory
-export TESTFILE=/R2/xxie/mzhang/hist_ctl_s11_none.nc
+export TESTFILE=/R2/xxie/modeltest/camrun/camscm/run/camrun.cam.h0.1995-07-19-00000.nc
 export OBSDIR=obs_sta
 
 #setting name of the dir for plotting output
-export PLOTDIR=hist_ctl_s11_none
+export PLOTDIR=test1
 
 #setting the intermediate data output directory
 export WORKDIR=/R2/xxie/mzhang
