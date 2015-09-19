@@ -13,14 +13,35 @@ text-align:center;
 }
 .figcap
 {
-   background-color:yellow;
+   background-color:SkyBlue;
+   font-family:Arial, Helvetica, sans-serif;
    width:400px;
    float:left;
 }
 .figframe
 {
+   box-shadow: 1px 1px 5px #888888;
    margin:2px;
    width:400px;
+   float:left;
+}
+.figtallimg
+{
+   width:200px;
+   float:left;
+}
+.figtallcap
+{
+   background-color:SkyBlue;
+   font-family:Arial, Helvetica, sans-serif;
+   width:200px;
+   float:left;
+}
+.figtallframe
+{
+   box-shadow: 1px 1px 5px #888888;
+   margin:2px;
+   width:200px;
    float:left;
 }
 .cleardiv
@@ -35,32 +56,19 @@ function figrow(varlist, levtype)
 {
    nlist = varlist.length;
 
-   if ( levtype != 'mlev' )
-   {
-      document.write('<div>');
-      for( i=0; i<nlist; i++)
-      {
-         document.write('<div class="figframe">');
-         document.write('<div class="figcap">'+varlist[i]+'</div>');
-         document.write('<IMG class="figimg" SRC="SCM_'+levtype+'_'+varlist[i]+'.png">');
-         document.write('</div>');
-      }
-      document.write('<div class="cleardiv"></div>');
-      document.write('</div>');
-   }
-   else
+   if ( levtype == 'mlev' )
    {
       for( i=0; i<nlist; i++)
       {
       document.write('<div>');
 
          document.write('<div class="figframe">');
-         document.write('<div class="figcap">'+varlist[i]+'-TEST</div>');
+         document.write('<div class="figcap">'+varlist[i]+'-CNTR</div>');
          document.write('<IMG class="figimg" SRC="SCM_'+levtype+'_'+varlist[i]+'-0.png">');
          document.write('</div>');
 
          document.write('<div class="figframe">');
-         document.write('<div class="figcap">'+varlist[i]+'-CNTR</div>');
+         document.write('<div class="figcap">'+varlist[i]+'-TEST</div>');
          document.write('<IMG class="figimg" SRC="SCM_'+levtype+'_'+varlist[i]+'-1.png">');
          document.write('</div>');
 
@@ -74,7 +82,33 @@ function figrow(varlist, levtype)
       document.write('</div>');
       }
    }
-
+   else if ( levtype == 'slev')
+   {
+      document.write('<div>');
+      for( i=0; i<nlist; i++)
+      {
+         document.write('<div class="figframe">');
+         document.write('<div class="figcap">'+varlist[i]+'</div>');
+         document.write('<IMG class="figimg" SRC="SCM_'+levtype+'_'+varlist[i]+'.png">');
+         document.write('</div>');
+      }
+      document.write('<div class="cleardiv"></div>');
+      document.write('</div>');
+   }
+   else if ( levtype == 'mlev_avg')
+   {
+      document.write('<div>');
+      for( i=0; i<nlist; i++)
+      {
+         document.write('<div class="figtallframe">');
+         document.write('<div class="figtallcap">'+varlist[i]+'</div>');
+         document.write('<IMG class="figtallimg" SRC="SCM_'+levtype+'_'+varlist[i]+'.png">');
+         document.write('</div>');
+      }
+      document.write('<div class="cleardiv"></div>');
+      document.write('</div>');
+   }
+ 
 }
 </script>
 
@@ -84,13 +118,15 @@ function figrow(varlist, levtype)
 
 <p>SCM Diagnostics Results</p>
    <script>
-      figrow(['T','Q','CLOUD'], 'mlev_avg');
+      figrow(['T','Q','CLOUD', 'ICWMR', 'ICIMR'], 'mlev_avg');
       figrow(['CLDLOW','CLDMED','CLDHGH'], 'slev');
-      figrow(['FSNTC','FSNT','FLNTC','FLNT'], 'slev');
+      figrow(['FSNTC','FSNT'], 'slev');
+      figrow(['FLNTC','FLNT'], 'slev');
+      figrow(['FSDS','FLNS'], 'slev');
       figrow(['SWCF','LWCF'], 'slev');
-      figrow(['QRS','QRL'], 'mlev');
-      figrow(['FLNS','FLNT','FSDS','FSNT'], 'slev');
+      figrow(['CLOUD','QRS','QRL','ICWMR','ICIMR'], 'mlev');
       figrow(['PRECC','PRECL','PRECT'], 'slev');
+      figrow(['TGCLDLWP','TGCLDIWP'], 'slev');
       figrow(['SHFLX','LHFLX'], 'slev');
       figrow(['PBLH'], 'slev');
    </script>

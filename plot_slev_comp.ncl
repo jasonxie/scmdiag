@@ -1,5 +1,5 @@
 
-load "$SCMDIAG_CODE/utils/load.ncl"
+load "$SCMDIAG_CODE/load.ncl"
 
 begin
 
@@ -39,7 +39,11 @@ begin
   res@gsnPaperMargin = 0.0 ; for PS,PDF
 ; res@gsnPaperOrientation = "landscape"
 
-  cam_minmax(var, res)
+  cam_minmax(var, 1, res)
+  upper = max ((/max(indata_test), max(indata_obs)/) )
+  if ( upper .gt. res@trYMaxF ) then
+     res@trYMaxF = upper
+  end if
 
 ;==========================================
 ; tick mark setting
@@ -52,29 +56,26 @@ begin
 ; Line pattern setting
 ;==========================================
   res@gsnYRefLine = 0
-  res@xyLineThicknesses  = (/2, 2/)
+  res@xyLineThicknesses  = (/3, 3/)
   res@xyDashPatterns     = (/0, 0/)
   res@xyLineColors       = (/"black", "red"/)
 
-  res@tiMainString  = var+":"+indata_test@long_name
+  res@tiMainString  = indata_test@long_name
   res@tiXAxisString = indata_test&time@units
   res@tiYAxisOn     = False
 
-  stdfontht = 0.015
-  res@tiMainFontHeightF    = stdfontht
-  res@tiXAxisFontHeightF   = stdfontht*0.9
-  res@tmXBLabelFontHeightF = stdfontht*0.9
-  res@tmYLLabelFontHeightF = stdfontht*0.9
+  easyfonts(res, 0.02)
 
-  res@gsnRightString  = indata_test@units
-  res@gsnLeftString   = testname
+; res@gsnLeftString   = testname
 
   ccof     = esccr( indata_obs, indata_test, 0 )
   avg_test = avg(indata_test)
   avg_obs  = avg(indata_obs)
 
-  res@gsnStringFontHeightF = 10
-  res@gsnCenterString = "CONTROL Mean:"+sprintf("%10.3f",avg_obs)+"~C~"+"TEST Mean:"+sprintf("%10.3f",avg_test)+"~C~CC:" + sprintf("%10.3f",ccof)
+  res@gsnStringFontHeightF = 12
+  res@gsnRightString = indata_test@units
+  res@gsnLeftString  = "CC:" + sprintf("%8.3f",ccof)
+  res@gsnCenterString = "CNTR Mean:"+sprintf("%8.3f",avg_obs)+" TEST Mean:"+sprintf("%8.3f",avg_test)
   
   plot = gsn_csm_xy(wks, indata_time, (/indata_obs, indata_test/), res)
 ; plot = gsn_csm_xy(wks, indata_time, indata_test, res)

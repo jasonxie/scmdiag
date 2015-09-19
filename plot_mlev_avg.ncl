@@ -1,5 +1,5 @@
 
-load "$SCMDIAG_CODE/utils/load.ncl"
+load "$SCMDIAG_CODE/load.ncl"
 
 ;*************************************************
 ; Plotting Script for multi-level average profile
@@ -34,6 +34,7 @@ begin
   wks  = gsn_open_wks("pdf", plotdir+"/SCM_mlev_avg_"+var)
 
   res  = True
+  setviewratio( res, 0.5, False)
 
 ; res@gsnDraw = False
 ; res@gsnFrame = False

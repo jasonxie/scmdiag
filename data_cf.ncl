@@ -1,5 +1,5 @@
 
-load "$SCMDIAG_CODE/utils/load.ncl"
+load "$SCMDIAG_CODE/load.ncl"
 load "$SCMDIAG_CODE/scmio.ncl"
 
 begin

@@ -1,6 +1,6 @@
 
 
-load "$SCMDIAG_CODE/utils/load.ncl"
+load "$SCMDIAG_CODE/load.ncl"
 
 ;*************************************************
 ; Plotting Script for multi-level time series
